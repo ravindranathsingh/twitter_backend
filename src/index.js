@@ -11,8 +11,6 @@ const serverSetUp = () => {
         console.log(`Server Started at Port ${PORT}`)
         await connect();
         console.log('MongoDB Connected')
-        const tweetRepo = new TweetRepository();
-        await tweetRepo.create({content: 'With Hooks'})
     })
 }
 
