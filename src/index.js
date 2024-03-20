@@ -12,8 +12,7 @@ const serverSetUp = () => {
         await connect();
         console.log('MongoDB Connected')
         const tweetRepo = new TweetRepository();
-        const tweet = await tweetRepo.getAll(0, 4);
-        console.log(tweet[0].contentWithEmail)
+        await tweetRepo.create({content: 'With Hooks'})
     })
 }
 
