@@ -1,8 +1,7 @@
-const express = require('express')
-const connect = require('./config/database')
+import express from 'express'
+import { connect } from './config/database.js'
+import { PORT } from './config/serverConfig.js'
 const app = express();
-
-const { PORT } = require('./config/serverConfig');
 
 const serverSetUp = () => {
     app.listen(PORT, async () => {
@@ -12,4 +11,4 @@ const serverSetUp = () => {
     })
 }
 
-serverSetUp();
+export default serverSetUp();
