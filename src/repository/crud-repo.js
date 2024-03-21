@@ -25,10 +25,10 @@ class CrudRepository {
 
     async get(id) {
         try {
-            const response = await this.model.findById(id)
-            return response;
+            const result = await this.model.findById(id);
+            return result;
         } catch (error) {
-            console.log('Something went wrong at repository layer')
+            console.log("Something went wrong at repository layer");
             throw error;
         }
     }
