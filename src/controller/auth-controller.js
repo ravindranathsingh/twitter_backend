@@ -24,3 +24,22 @@ export const signUp = async ( req, res ) => {
         })
     }
 }
+
+export const login = async ( req, res ) => {
+    try {
+        const token = await userService.signIn(req.body)      
+        return res.status(200).json({
+            success: true,
+            message: 'Successfully logged In',
+            data: token,
+            err: {}
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Something went wrong',
+            data: {},
+            err: error
+        })
+    }
+}
