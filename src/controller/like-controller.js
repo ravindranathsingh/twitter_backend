@@ -1,10 +1,10 @@
-import { TweetService } from '../services/index.js'
+import { LikeService } from '../services/index.js'
 
-const tweetService = new TweetService();
+const likeService = new LikeService();
 
-export const createTweet = async ( req, res ) => {
+export const toggleLike = async ( req, res ) => {
     try {
-        const response = await tweetService.create(req.body)
+        const response = await likeService.toggleLike(req.query.modelId, req.query.modelType, req.body.userId)
         return res.status(201).json({
             data: response,
             success: true,
