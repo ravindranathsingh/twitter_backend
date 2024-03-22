@@ -2,6 +2,9 @@ import Tweet from '../models/tweet.js'
 import CrudRepository from './crud-repo.js'
 
 class TweetRepository extends CrudRepository {
+    constructor() {
+        super(Tweet);
+    }
     async create(data) {
         try {
             const tweet = await Tweet.create(data)
@@ -16,7 +19,10 @@ class TweetRepository extends CrudRepository {
             const tweet = await Tweet.findById(id).populate('comments').populate({
                 path: 'comments',
                 populate: {
-                    path: 'comments'
+                    path: 'comments',
+                    populate: {
+                        path: 'comments'
+                    }
                 }
             }).lean()
             return tweet;
