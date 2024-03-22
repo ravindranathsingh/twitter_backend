@@ -6,12 +6,13 @@ class CommentRepository extends CrudRepository {
         super(Comment)
     }
 
-    async find(id) {
+    async get(id) {
         try {
-            const comment = await Comment.findById(id).populate({path: 'comments'});
-            return comment;
+            const result = await Comment.findById(id).populate({path: 'likes'});
+            return result;
         } catch (error) {
-            console.log(error);
+            console.log("Something went wrong in crud repo");
+            throw error;
         }
     }
 }

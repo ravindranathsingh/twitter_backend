@@ -5,20 +5,21 @@ class CrudRepository {
 
     async create(data) {
         try {
-            const response = await this.model.create(data)
-            return response;
+            console.log(data);
+            const result = await this.model.create(data);
+            return result;
         } catch (error) {
-            console.log('Something went wrong at repository layer')
+            console.log("Something went wrong in crud repo");
             throw error;
         }
     }
 
     async destroy(id) {
         try {
-            const response = await this.model.findByIdAndDelete(id)
-            return response;
+            const result = await this.model.findByIdAndDelete(id);
+            return result;
         } catch (error) {
-            console.log('Something went wrong at repository layer')
+            console.log("Something went wrong in crud repo");
             throw error;
         }
     }
@@ -28,30 +29,31 @@ class CrudRepository {
             const result = await this.model.findById(id);
             return result;
         } catch (error) {
-            console.log("Something went wrong at repository layer");
+            console.log("Something went wrong in crud repo");
             throw error;
         }
     }
 
     async getAll() {
         try {
-           const response = await this.model.find({})
-           return response; 
+            const result = await this.model.find({});
+            return result;
         } catch (error) {
-            console.log('Something went wrong at repository layer')
+            console.log("Something went wrong in crud repo");
             throw error;
         }
     }
 
     async update(id, data) {
         try {
-            const response = await this.model.findByIdAndUpdate(id, data, {new: true})
-            return response;
-        } catch (error) {
-            console.log('Something went wrong at repository layer')
+            const result = await this.model.findByIdAndUpdate(id, data, {new: true});
+            return result;
+        } catch(error) {
+            console.log("Something went wrong in crud repo");
             throw error;
         }
     }
+
 }
 
 export default CrudRepository;
